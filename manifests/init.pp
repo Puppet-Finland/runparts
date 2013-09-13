@@ -24,7 +24,7 @@
 class runparts {
 
 # Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_runparts') != 'false' {
+if hiera('manage_runparts', 'true') != 'false' {
 
     # Installation of runparts is highly OS-specific, hence we use separate 
     # subclasses to do it.
