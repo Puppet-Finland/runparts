@@ -12,5 +12,8 @@ class runparts::params {
         'Debian': {
             $runparts_package = 'debianutils'
         }
+        default: {
+            fail("Unsupported operating system ${::osfamily}")
+        }
     }
 }

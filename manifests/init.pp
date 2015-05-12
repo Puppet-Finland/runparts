@@ -5,11 +5,12 @@
 #
 # == Parameters
 #
-# None at the moment
+# [*manage*]
+#   Manage runparts using Puppet. Valid values are 'yes' (default) and 'no'.
 #
 # == Examples
 #
-#   include runparts
+#   include ::runparts
 #
 # == Authors
 #
@@ -21,18 +22,14 @@
 #
 # BSD-license. See file LICENSE for details.
 #
-class runparts {
+class runparts
+(
+    $manage = 'yes'
+)
+{
 
-# Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_runparts', 'true') != 'false' {
+if $manage == 'yes' {
 
-    # Installation of runparts is highly OS-specific, hence we use separate 
-    # subclasses to do it.
-    case $::osfamily {
-        'Suse': { include runparts::suse }
-        'RedHat': { include runparts::generic }
-        'Debian': { include runparts::generic }
-        default: { include runparts::generic }
-    }
+    include ::runparts::install
 }
 }
