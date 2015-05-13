@@ -5,7 +5,7 @@
 class runparts::install inherits runparts::params {
 
     package { 'runparts-runparts':
-        ensure   => present,
-        name => $::runparts::params::runparts_package,
+        ensure => present,
+        name   => $::runparts::params::runparts_package,
     }
 }
