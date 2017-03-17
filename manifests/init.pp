@@ -6,7 +6,7 @@
 # == Parameters
 #
 # [*manage*]
-#   Manage runparts using Puppet. Valid values are 'yes' (default) and 'no'.
+#   Manage runparts using Puppet. Valid values are true (default) and false.
 #
 # == Examples
 #
@@ -24,11 +24,11 @@
 #
 class runparts
 (
-    $manage = 'yes'
+    Boolean $manage = true
 )
 {
 
-if $manage == 'yes' {
+if $manage {
 
     include ::runparts::install
 }
